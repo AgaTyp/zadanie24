@@ -1,0 +1,9 @@
+<Context>
+    <Resource name="jdbc/budget"
+              factory="org.apache.tomcat.jdbc.pool.DataSourceFactory"
+              type="javax.sql.DataSource"
+              username="aga"
+              password="admin"
+              driverClassName="org.postgresql.Driver"
+              url="jdbc:postgresql://localhost:5432/budget?serverTimezone=UTC"/>
+</Context>
