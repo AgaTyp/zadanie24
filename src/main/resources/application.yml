@@ -6,4 +6,4 @@ spring:
     password: admin
     tomcat:
       driver-class-name: org.postgresql.Driver
-    type: org.postgresql.jdbc3.Jdbc3PoolingDataSource
+#    type: org.postgresql.jdbc3.Jdbc3PoolingDataSource

@@ -20,7 +20,8 @@ class DataSourceProvider {
     @ConfigurationProperties(prefix = "spring.datasource")
     @Bean
     @Primary
-    static DataSource getDataSource() throws NamingException {
+    static DataSource getDataSource() throws NamingException, ClassNotFoundException {
+        Class.forName("org.postgresql.Driver");
         return DataSourceBuilder
                 .create()
                 .build();

@@ -12,7 +12,7 @@ public class TransactionDao {
     TransactionDao() {
         try {
             this.dataSource = DataSourceProvider.getDataSource();
-        } catch (NamingException e) {
+        } catch (NamingException | ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
     }
