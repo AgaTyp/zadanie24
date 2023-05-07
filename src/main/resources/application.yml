@@ -1,0 +1,14 @@
+spring:
+  datasource:
+    name: jdbc/budget
+    url: jdbc:postgresql://localhost:5432/budget?serverTimezone=UTC
+    username: aga
+    password: admin
+#    tomcat:
+#      driver-class-name: org.postgresql.Driver
+    driver-class-name: org.postgresql.Driver
+    tomcat:
+      default-auto-commit: true
+      driver-class-name: org.postgresql.Driver
+
+#    type: org.postgresql.jdbc3.Jdbc3PoolingDataSource

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Budżet domowy</title>
+</head>
+<body>
+<h2>Budżet domowy</h2>
+
+<ul>
+  <li th:each="type: ${types}">
+    <a th:href="|/list?type=${type}|" th:text="|${type.description}|"></a>
+  </li>
+</ul>
+<form action="/dodaj" method="post" th:object="${transaction}">
+  <input type="text" placeholder="Nazwa" th:field="*{description}">
+  <input type="text" placeholder="Kwota" th:field="*{amount}">
+  <input type="text" placeholder="Data" th:field="*{date}">
+  <select th:field="*{type}">
+    <option th:each="type: ${types}"
+            th:value="|${type}|" th:text="|${type.description}|"></option>
+  </select>
+  <input type="submit" value="Dodaj">
+</form>
+
+</body>
+</html>

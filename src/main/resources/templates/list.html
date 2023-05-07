@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Lista</title>
+  <style>
+    #headings {
+      color: dodgerblue;
+    }
+
+    #sumup {
+      color: blueviolet;
+      font-style: italic;
+      font-weight: bold;
+    }
+
+    table, td {
+      border: 1px solid black;
+    }
+  </style>
+</head>
+<body>
+<h2 th:text="|Wykaz ${type.titlePart}|"></h2>
+
+<table>
+  <thead>
+  <tr id="headings">
+    <td>Nazwa</td>
+    <td>Kwota</td>
+    <td>Data</td>
+    <td></td>
+    <td></td>
+  </tr>
+  </thead>
+  <tbody>
+  <tr th:each="transaction: ${transactionList}" th:object="${transaction}">
+    <td th:text="*{description}"></td>
+    <td th:text="*{amount + ' zł'}"></td>
+    <td th:text="*{date}"></td>
+    <td><a th:href="|/edit?id=*{id}|">Edytuj</a></td>
+    <td><form action="/delete" method="post">
+      <input type="hidden" name="id" th:value="${transaction.id}">
+      <input type="hidden" name="type" th:value="${transaction.type}">
+      <input type="submit" value="Usuń"></form></td>
+  </tr>
+  <tr id="sumup">
+    <td>Suma</td>
+    <td th:text="${sum + ' zł'}"></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  </tbody>
+</table>
+<p><a href="/">Strona główna</a></p>
+
+</body>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Edycja transakcji</title>
+</head>
+<body>
+<h2 th:text="|Edycja transakcji ${transaction.description}|">Edycja transakcji</h2>
+
+<form action="/edit" method="post" th:object="${transaction}">
+  <input type="hidden" th:field="*{id}">
+  <input type="text" placeholder="Nazwa" th:field="*{description}">
+  <input type="text" placeholder="Kwota" th:field="*{amount}">
+  <input type="text" placeholder="Data" th:field="*{date}">
+  <select th:field="*{type}">
+    <option th:each="type: ${types}"
+            th:value="|${type}|" th:text="|${type.description}|" th:default="${transaction.type}"></option>
+  </select>
+  <input type="submit" value="Edytuj">
+</form>
+<div><a href="/">Strona główna</a></div>
+
+</body>
+</html>
