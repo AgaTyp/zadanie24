@@ -21,18 +21,13 @@ class DataSourceProvider {
     @Bean
     @Primary
     static DataSource getDataSource() throws NamingException, ClassNotFoundException {
-        Class.forName("org.postgresql.Driver");
         return DataSourceBuilder
                 .create()
+                .url("jdbc:postgresql://localhost:5432/budget?serverTimezone=UTC")
+                .driverClassName("org.postgresql.Driver")
+                .username("aga")
+                .password("admin")
                 .build();
     }
 
-//    static DataSource getDataSource() throws NamingException {
-//        if (dataSource == null) {
-//            Context initContext = new InitialContext();
-//            Context envContext = (Context) initContext.lookup("java:comp/env/");
-//            dataSource = (DataSource) envContext.lookup("jdbc/budget");
-//        }
-//        return dataSource;
-//    }
 }

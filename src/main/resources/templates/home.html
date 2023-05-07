@@ -7,11 +7,11 @@
 <body>
 <h2>Budżet domowy</h2>
 
-<!--<ul>-->
-<!--  <li th:each="category: ${categories}">-->
-<!--    <a th:href="|/lista?kategoria=${category}|" th:text="|${category.description}|"></a>-->
-<!--  </li>-->
-<!--</ul>-->
+<ul>
+  <li th:each="type: ${types}">
+    <a th:href="|/list?type=${type}|" th:text="|${type.description}|"></a>
+  </li>
+</ul>
 <form action="/dodaj" method="post" th:object="${transaction}">
   <input type="text" placeholder="Nazwa" th:field="*{description}">
   <input type="text" placeholder="Kwota" th:field="*{amount}">
